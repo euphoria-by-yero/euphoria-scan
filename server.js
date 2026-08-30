@@ -1,75 +1,112 @@
 const express = require('express');
 const app = express();
-const path = require('path');
+const admin = require('firebase-admin');
+require('dotenv').config();
 
+// 👉 Middleware
 app.use(express.json());
 
-// 🔥 FIREBASE
-const admin = require('firebase-admin');
+// 🔐 TOKEN DE SEGURIDAD (solo tu APK podrá usarlo)
+const TOKEN = "EUPHORIA-ADMIN-2026";
 
+// 👉 Cargar credenciales Firebase
 let serviceAccount;
 
 if (process.env.FIREBASE_KEY) {
+  // 🌐 PRODUCCIÓN (Render)
   serviceAccount = JSON.parse(process.env.FIREBASE_KEY);
+  console.log("🔥 Firebase desde RENDER");
 } else {
+  // 💻 LOCAL
   serviceAccount = require('./firebase-key.json');
+  console.log("🔥 Firebase desde LOCAL");
 }
 
+// 👉 Inicializar Firebase
 admin.initializeApp({
   credential: admin.credential.cert(serviceAccount)
 });
 
 const db = admin.firestore();
 
-// 👉 FRONTEND
-app.use(express.static(path.join(__dirname, 'public')));
 
-app.get('/', (req, res) => {
-  res.sendFile(path.join(__dirname, 'public', 'index.html'));
-});
-
-// 🎟️ VALIDAR BOLETAS
-app.post('/validar-boleta', async (req, res) => {
+// ==========================================
+// 🎟️ ENDPOINT VALIDAR BOLETA
+// ==========================================
+app.post('/validar', async (req, res) => {
   try {
+    // 🔐 Validación de seguridad
+    const token = req.headers.authorization;
+
+    if (token !== TOKEN) {
+      return res.status(403).json({
+        estado: 'no_autorizado'
+      });
+    }
+
     const { codigo } = req.body;
 
+    if (!codigo) {
+      return res.status(400).json({
+        estado: 'invalido'
+      });
+    }
+
+    // 🔍 Buscar boleta
     const ref = db.collection('boletas').doc(codigo);
     const doc = await ref.get();
 
+    // ❌ No existe
     if (!doc.exists) {
-      return res.json({ estado: "invalido" });
+      return res.json({
+        estado: 'invalido'
+      });
     }
 
     const data = doc.data();
 
+    // 🔴 Ya usada
     if (data.usado) {
-      return res.json({ estado: "usado" });
+      return res.json({
+        estado: 'usado',
+        nombre: data.nombre || "Sin nombre"
+      });
     }
 
+    // 🟢 Marcar como usada
     await ref.update({
       usado: true,
-      hora_ingreso: new Date()
+      horaIngreso: new Date()
     });
 
-    // 🔢 CONTADOR
-    const contRef = db.collection('control').doc('ingresos');
-    await contRef.set({
-      total: admin.firestore.FieldValue.increment(1)
-    }, { merge: true });
-
-    const contDoc = await contRef.get();
-    const total = contDoc.data().total;
-
-    return res.json({ estado: "valido", total });
+    return res.json({
+      estado: 'valido',
+      nombre: data.nombre || "Sin nombre"
+    });
 
   } catch (error) {
-    console.error(error);
-    res.status(500).json({ error: 'Error' });
+    console.error("❌ Error en /validar:", error);
+
+    return res.status(500).json({
+      estado: 'error'
+    });
   }
 });
 
-// 🚀 SERVER
-const PORT = 3000;
+
+// ==========================================
+// ❤️ ENDPOINT DE PRUEBA
+// ==========================================
+app.get('/', (req, res) => {
+  res.send('🎟️ API EUPHORIA VALIDADOR ACTIVA');
+});
+
+
+// ==========================================
+// 🚀 SERVIDOR
+// ==========================================
+const PORT = process.env.PORT || 3000;
+
 app.listen(PORT, () => {
-  console.log(`Scanner listo en puerto ${PORT}`);
+  console.log(`🚀 Servidor corriendo en puerto ${PORT}`);
 });

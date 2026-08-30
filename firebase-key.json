@@ -1,0 +1,13 @@
+{
+  "type": "service_account",
+  "project_id": "euphoria-yero",
+  "private_key_id": "cb0a248c40b320be6916a92b50d29e71a980d6ab",
+  "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvAIBADANBgkqhkiG9w0BAQEFAASCBKYwggSiAgEAAoIBAQDLKP81CCTsK6T2\nlxKlMIhcDA7WloYXbxD2MPNbQ9/M+9h1wUyXCjHJKAbaxUAsBaUqS/wmcPANKeQB\nNzkmYdzNHP13x9Cs145/3GVvbnFoAEvj04+cwVxlATEOGE8kyMFeH0edtj1CA1Wd\n522iJHTDjyAbteKLZkRHXxky8LDrL5ukfdFOxggPosGGSD22cVcd7zr0TLQW6hg7\nd/6j1TqnfvsLVclnFp91+86ITeuKtY46bjqgPe71+WVYTzXhj/wBFpvhEwl0Mi/d\nPrYh/m/bk6sgxuG5oL07OYuJs5bmHxAbJlCGJks9ynSGjcmpC5VuJ+m9di7vtNsz\nbQfryONLAgMBAAECggEAC/kUOUrhP4M+9e1nWDw+UmEU4B6qM71ZnDi8TtehhpId\nFVYurlltH7QahfrJUmQux18HsuLwXXDnkrlvcSH5V6PqvYwVcepDkqjULYyuZaOx\nf/FwQvETrJGKaOXpMXtyB0WupyPIrm2bNnLKKkZzFIdd1rmRwAdnOhGSXvHXwLRy\n9TeJyLcTwdjE5MX0wd3+TaxL/53dHWbwOASWaLWwbxklgwCedZuyT2EIBXY8l4xl\ncw0HuUzwClvc/fg7J4fFN2dkBDH8pl2pqDE0kvodPqH2j5VuYrxxVB0c90adp8LG\nVAsbLJ0sZbzEwNlVb39nlWrn14Uy8ItZW66VmrfmaQKBgQD0NJsuPzCbde+LXoos\nxcpJi08RKAwy8ebfV48FWuSAzzr5Iadh5f+ECkincI2oj05NPwpRNb1c1LkzS0SQ\nJjYvUS8NkvaJi+YYQI7LlRC8xlZORpDSp+RHtJVIGtZnWQHCp/zLoUvIgnKuuc5Q\nHzFiNQA7W21JH0xQa/cDQMll/QKBgQDU+OZZQEPu77K4eOcUxiN+5Djf8btoVnoW\n6bvJMHQ34alES2pNjRlSaC+2csg74dHP4G0eIb94nTP0VQe+sQQSEmykiWkhhY/O\n2E4fbkh3zNjNJAE2c4jMtxBc2/fseMglvMWTJBAQqvXda9bPGLiRa6xK6S3rHIva\ntlHxOj4M5wKBgAjuh6J4YzG8bYd+bLVYgp6P/tNU0KVoXZZboHqEqYjgi3qjNXkK\nLX9J1QByyGua2jVPEfSIb6WejiuHHDnde+vdH0hy0JuVR1QpwE9H43XUF0IDqLZb\nt6i7vR4HBUKAaeURudhEzP3Hb6ReXWJm0aqS37BMFsIu596lJEK1MuiNAoGALXTC\nlaIl3cXDe6QyjjiMMvU7PnE18tsiS+mvbw2sgJDls/H0yoCnOvOJ24M8Qau9QIVC\nRQAnAfNrt2a+tHDL0Z+lGKlLiyAaxaddZVAAn7FVRNO+foTCWg9oqqk4jXxqG8Pi\n17kGxMf4mj3+J027dy5oI8UJS/lX0GLBsp8fx1kCgYAsP2MPAtsotLIeRJ3LRxNr\nNdhp4XhiTO2MIjNxLyDuOdPguDccxuXtmJOm1j5W4JFp0cxu3i1TOLZMsKopbxvR\nZUT2NKLayCq+SgD4mSej+C/jrSUwZJ07Bkar8dZ2dZujjG8ifdPovsIhvitXZKT/\nHv0mQ2nJHoXaG2FDXK0d/g==\n-----END PRIVATE KEY-----\n",
+  "client_email": "firebase-adminsdk-fbsvc@euphoria-yero.iam.gserviceaccount.com",
+  "client_id": "102411903107467296468",
+  "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+  "token_uri": "https://oauth2.googleapis.com/token",
+  "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+  "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/firebase-adminsdk-fbsvc%40euphoria-yero.iam.gserviceaccount.com",
+  "universe_domain": "googleapis.com"
+}

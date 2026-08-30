@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Scanner Euphoria</title>
+  <script src="https://unpkg.com/html5-qrcode"></script>
+</head>
+
+<body style="background:black;color:white;text-align:center">
+
+<h2>🎟️ ESCANEAR BOLETAS</h2>
+
+<div id="reader" style="width:300px;margin:auto;"></div>
+
+<h2 id="resultado"></h2>
+<h3 id="contador">Entradas: 0</h3>
+
+<script>
+const resultado = document.getElementById("resultado");
+const contador = document.getElementById("contador");
+
+function onScanSuccess(decodedText) {
+
+  fetch('/validar-boleta', {
+    method: 'POST',
+    headers: {'Content-Type': 'application/json'},
+    body: JSON.stringify({ codigo: decodedText })
+  })
+  .then(res => res.json())
+  .then(data => {
+
+    if (data.estado === "valido") {
+      resultado.innerHTML = "✅ VÁLIDO";
+      resultado.style.color = "lime";
+      contador.innerHTML = "Entradas: " + data.total;
+    } 
+    else if (data.estado === "usado") {
+      resultado.innerHTML = "⚠️ YA INGRESÓ";
+      resultado.style.color = "orange";
+    } 
+    else {
+      resultado.innerHTML = "❌ INVÁLIDO";
+      resultado.style.color = "red";
+    }
+
+  });
+}
+
+const html5QrCode = new Html5Qrcode("reader");
+
+html5QrCode.start(
+  { facingMode: "environment" },
+  { fps: 10, qrbox: 250 },
+  onScanSuccess
+);
+</script>
+
+</body>
+</html>
