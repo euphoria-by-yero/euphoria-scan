@@ -18,7 +18,7 @@ if (process.env.FIREBASE_KEY) {
   console.log("🔥 Firebase desde RENDER");
 } else {
   // 💻 LOCAL
-  serviceAccount = require('./firebase-key.json');
+  serviceAccount = require('../firebase-key.json');
   console.log("🔥 Firebase desde LOCAL");
 }
 
