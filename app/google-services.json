@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "253267502727",
+    "project_id": "euphoriascanner",
+    "storage_bucket": "euphoriascanner.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:253267502727:android:4118c0f80ea54b5c5d3a22",
+        "android_client_info": {
+          "package_name": "com.example.euphoriascanner"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBTXLzu4YbZ7gjFxPOjZBKdS4OWH2ptjCk"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
